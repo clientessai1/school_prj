@@ -1,0 +1,27 @@
+
+<h3> Template of api_login </h3>
+
+<form action='api_login/postLoginData' method='post' id="form_login">
+  {% csrf_token %}
+  <label>
+	Username:
+	<input type="text" placeholder="Enter Username" name="username" id="username" required />
+  </label>
+  <br/>
+  <label>
+	Password:
+	<input type="password" placeholder="Enter Password" name="password" id="password" required />
+  </label>
+
+  <br/>
+  <input type="submit" value='Valider'/>
+  <button type="reset" onclick='salut();'>Annuler</button>
+
+</form>
+
+
+  <button onclick="alert('cool'); salut();">Greet</button>
+  <button id='retrieve' onclick="verifLoginData();" >Retrieve</button>
+  <p id='results'></p>
+
+

@@ -1,0 +1,9 @@
+# generated from C:/Program Files (x86)/umbrello/share/apps/umbrello/layouts/class-export.desktop
+digraph G {
+	graph [splines=polyline,rankdir=TB,outputorder=nodesfirst,ranksep=0.5,nodesep=0.5];
+"jtU6ciqyxFtn" [shape=box,label="Student\n+ __init__(name : string) : string\n+ enroll(course : string) : string",width="2.55556",height="0.722222"];
+"nM2pU1XaEy7n" [shape=box,label="Enrollment\n+ __init__(student : string, course : string) : string",width="3.84722",height="0.513889"];
+"DuzVSSgJMVIu" [shape=box,label="Course\n+ __init__(name : string) : string\n+ add_student(student : string) : string",width="3.02778",height="0.722222"];
+"jtU6ciqyxFtn" -> "DuzVSSgJMVIu" [weight=0.001,arrowhead=none,label="",headlabel="  *",taillabel="  *"];
+
+}

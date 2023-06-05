@@ -1,0 +1,5 @@
+digraph "Enrollment" {
+rankdir=BT
+charset="utf-8"
+"pythonPooEssai03.enrollment.Enrollment" [color="black", fontcolor="black", label=<{pythonPooEssai03.enrollment.Enrollment|course<br ALIGN="LEFT"/>student<br ALIGN="LEFT"/>|__init__(student, course)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+}

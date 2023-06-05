@@ -1,0 +1,194 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SCHOOLAPP - A Basic HTML5 Template</title>
+
+</head>
+
+<body>
+
+  <h2>Au plaisir de vous revoir.</h2>
+  <p id='res'></p>
+  <div id='form_login'></div>
+
+
+<script>
+
+ function getCookie(name) {
+     var cookieValue = null;
+	 //alert('getCookie - 1'+document.cookie );
+     if (document.cookie && document.cookie !== '') {
+	 //alert('getCookie - 2');
+         var cookies = document.cookie.split(';');
+         for (var i = 0; i < cookies.length; i++) {
+             //var cookie = jQuery.trim(cookies[i]);
+			 var cookie = cookies[i].trim();
+             // Does this cookie string begin with the name we want?
+             if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                 break;
+             }
+         }
+     }
+     return cookieValue;
+  }
+
+  function salut()
+  {
+	  
+	  //alert('Salut');
+ var val_input_no1 = document.getElementById('no1').value;
+ var val_input_no2 = document.getElementById('no2').value;
+ var concat_input = 'no1='+val_input_no1+'&no2='+val_input_no2;
+	  alert(concat_input);
+	}
+
+
+function getXhr(){
+ var xhr = null;
+ if(window.XMLHttpRequest) // Firefox et autres
+	{
+  xhr = new XMLHttpRequest();
+	console.log("MERCIIIIIIIIIIIIIIIIIIII");
+	  }
+ else if(window.ActiveXObject){ // Internet Explorer
+  try {
+   xhr = new ActiveXObject("Msxml2.XMLHTTP");
+	console.log("MERCIIIIIIIIIIIIIIIIIIII-2");
+  } catch (e) {
+   xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	console.log("MERCIIIIIIIIIIIIIIIIIIII-3");
+  }
+ }
+ else { // XMLHttpRequest non supporté par le navigateur
+  alert("Votre navigateur ne supporte pas les objets XMLHTTPRequest...");
+  xhr = false;
+ }
+
+
+
+ return xhr;
+}
+
+/**
+* Méthode qui sera appelée sur le click du bouton
+*/
+function go(){
+ var xhr = getXhr();
+ // On défini ce qu'on va faire quand on aura la réponse
+ xhr.onreadystatechange = function(){
+  // On ne fait quelque chose que si on a tout reçu et que le serveur est ok
+  if(xhr.readyState == 4 && xhr.status == 200){
+	  document.getElementById('res').innerHTML = xhr.responseText;
+	  alert(xhr.responseText);
+  }
+ }
+ var val_input_no1 = document.getElementById('no1').value;
+ var val_input_no2 = document.getElementById('no2').value;
+ var concat_input = "?no1="+val_input_no1+"&no2="+val_input_no2;
+
+ xhr.open("POST","testAjax",true);
+
+//if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) 
+// if (true)
+	{
+ 
+	 // Only send the token to relative URLs i.e. locally.
+	 xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+   }
+
+ var formate_to_json = {"no1": val_input_no1 , "no2": val_input_no2};
+//alert(concat_input);	
+//	 alert(getCookie('csrftoken'));
+ //var str_to_send = document.getElementById('no1').value;
+ //xhr.send(null);
+ //xhr.send("no1='"+val_input_no1+"'");
+ //xhr.send("no1='85'");
+	//xhr.send(JSON.stringify({'no1':85}));
+	xhr.send(JSON.stringify(formate_to_json));
+}
+
+function go2(){
+ var xhr = getXhr();
+	console.log(xhr);
+ // On défini ce qu'on va faire quand on aura la réponse
+ xhr.onreadystatechange = function(){
+  // On ne fait quelque chose que si on a tout reçu et que le serveur est ok
+  if(xhr.readyState == 4 && xhr.status == 200){
+	  document.getElementById('res').innerHTML = xhr.responseText;
+//	  alert(xhr.responseText);
+  }
+ }
+
+ //xhr.open("GET","testAjax"+concat_input,true);
+ xhr.open("GET","api1/",true);
+ //xhr.open("POST","api1/",true);
+
+//if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) 
+// if (true)
+	{
+ 
+	 // Only send the token to relative URLs i.e. locally.
+	 xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+	 xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+   }
+
+ //var formate_to_json = {"no1": val_input_no1 , "no2": val_input_no2};
+ var formate_to_json = {"no1": 'val_input_no1' , "no2": 'val_input_no2'};
+	//xhr.send(JSON.stringify(formate_to_json));
+	xhr.send();
+}
+
+function goApiFormLogin(){
+ var xhr = getXhr();
+	console.log(xhr);
+ // On défini ce qu'on va faire quand on aura la réponse
+ xhr.onreadystatechange = function(){
+  // On ne fait quelque chose que si on a tout reçu et que le serveur est ok
+  if(xhr.readyState == 4 && xhr.status == 200){
+	  document.getElementById('form_login').innerHTML = xhr.responseText;
+//	  alert(xhr.responseText);
+  }
+ }
+
+ //xhr.open("GET","testAjax"+concat_input,true);
+ xhr.open("GET","api_login/",true);
+ //xhr.open("POST","api_login/postLoginData",true);
+ //xhr.open("POST","api1/",true);
+
+// if (true)
+	{
+ 
+	 // Only send the token to relative URLs i.e. locally.
+	 xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+	 xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	 /*xhr.setRequestHeader("Accept", "application/json");
+	 xhr.setRequestHeader("Content-Type", "application/json");*/
+   }
+
+ //var formate_to_json = {"no1": val_input_no1 , "no2": val_input_no2};
+ var formate_to_json = {"no1": 'val_input_no1' , "no2": 'val_input_no2'};
+	//xhr.send(JSON.stringify(formate_to_json));
+	xhr.send();
+}
+
+
+  go2();
+  goApiFormLogin();
+  alert("Bien");
+
+
+</script>
+
+<script src="{% static 'myscript.js' %}"></script> 
+<script src="{% static 'ajax_preparation_functions.js' %}"></script> 
+<script src="{% static 'api_logged_user_pages.js' %}"></script> 
+</body>
+</html>
+

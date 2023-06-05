@@ -1,0 +1,11 @@
+# generated from C:/Program Files (x86)/umbrello/share/apps/umbrello/layouts/class-export.desktop
+digraph G {
+	graph [splines=polyline,rankdir=TB,outputorder=nodesfirst,ranksep=0.5,nodesep=0.5];
+"Qb7XI3Q2cHlS" [shape=box,label="Etd\n- nom : string",width="1.13889",height="0.513889"];
+"yedv54eo4O4w" [shape=box,label="Mat\n- libelle : string",width="1.25",height="0.513889"];
+"L0Ty9oopi6Y0" [shape=box,label="ClassAssoc\n- annee : short\n- etd : Etd\n- mat : Mat",width="1.23611",height="0.930556"];
+"yedv54eo4O4w" -> "Qb7XI3Q2cHlS" [weight=0.001,arrowhead=none,label="etudier",headlabel="  *",taillabel="  *"];
+"L0Ty9oopi6Y0" -> "Qb7XI3Q2cHlS" [weight=0.001,arrowhead=diamonds,label="",headlabel="+etd  ",taillabel="  "];
+"L0Ty9oopi6Y0" -> "yedv54eo4O4w" [weight=0.001,arrowhead=diamonds,label="",headlabel="+mat  ",taillabel="  "];
+
+}
